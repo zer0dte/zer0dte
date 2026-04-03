@@ -4,7 +4,7 @@
 
 16 MCP tools that give your AI assistant live 0DTE options data: dealer exposure, key levels, regime classification, expected moves, and smart-filtered chains.
 
-No installation. No dependencies. One URL. **Free to try — 10 calls/day, no registration.**
+No installation. No dependencies. One URL. **Free beta — 3 sessions/day, no registration.**
 
 ```
 https://mcp.zer0dte.trade/sse
@@ -26,7 +26,7 @@ Your AI Client ←── MCP Protocol ──→ ZER0DTE Server ←── Compute
 
 ## Quick Start
 
-No API key needed. Add the URL and start using it.
+No API key needed. Add the URL and start using it. Data is live during US market hours (9:30–16:00 ET, Mon–Fri).
 
 ### Claude Code
 
@@ -35,7 +35,7 @@ claude mcp add --transport sse zer0dte https://mcp.zer0dte.trade/sse \
   --header "Authorization: Bearer free-tier"
 ```
 
-> **Free tier:** 3 sessions/day, 5/week. For unlimited access, API keys coming soon — [join the waitlist](https://zer0dte.trade).
+> **Free beta:** 3 sessions/day, 5/week. Limits are temporary — unlimited API keys coming soon.
 
 ### Other MCP Clients (Claude Desktop, Cursor, Windsurf)
 
@@ -309,12 +309,12 @@ Monitors for significant changes: regime flips, level breaks, VIX spikes, proxim
 
 | Plan | Limit | Price |
 |------|-------|-------|
-| **Free** | 10 calls/day, 50/week | $0 — no registration |
+| **Free beta** | 3 sessions/day, 5/week | $0 — no registration |
 | **Pro** | Unlimited | Coming soon — API key based |
 
-The free tier is live now. No API key, no signup. Just add the URL.
+Free beta is live now. No API key, no signup. Just add the URL. Current limits are generous and will be reduced — get in early.
 
-Pro tier with unlimited access via API key is in development. Join the waitlist at [zer0dte.trade](https://zer0dte.trade) to get notified.
+Pro tier with unlimited access via API key is in development. Contact info@zer0dte.trade for updates.
 
 ---
 
