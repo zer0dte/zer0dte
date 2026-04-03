@@ -130,6 +130,13 @@
       "parameters": {
         "symbol": { "type": "string", "default": "SPX", "description": "Underlying symbol" }
       }
+    },
+    {
+      "name": "zer0dte_entry_score",
+      "description": "Research-backed entry scoring (0-100). Evaluates multiple market factors to answer: should you enter a 0DTE trade right now?",
+      "parameters": {
+        "symbol": { "type": "string", "default": "SPX", "description": "Underlying symbol" }
+      }
     }
   ]
 }

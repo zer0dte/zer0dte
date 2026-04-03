@@ -1,10 +1,10 @@
 # ZER0DTE
 
-![Beta](https://img.shields.io/badge/status-beta-blue) ![MCP](https://img.shields.io/badge/protocol-MCP-green) ![Tools](https://img.shields.io/badge/tools-16-orange) ![License](https://img.shields.io/badge/data-free_tier-brightgreen)
+![Beta](https://img.shields.io/badge/status-beta-blue) ![MCP](https://img.shields.io/badge/protocol-MCP-green) ![Tools](https://img.shields.io/badge/tools-17-orange) ![License](https://img.shields.io/badge/data-free_tier-brightgreen)
 
 **Real-time options intelligence for AI agents.**
 
-16 MCP tools that give your AI assistant live 0DTE options data: dealer exposure, key levels, regime classification, expected moves, and smart-filtered chains.
+17 MCP tools that give your AI assistant live 0DTE options data: dealer exposure, key levels, regime classification, expected moves, and smart-filtered chains.
 
 No installation. No dependencies. One URL. **Free beta — 3 sessions/day, no registration.**
 
@@ -60,6 +60,7 @@ Header: Authorization: Bearer free-tier
 | [`zer0dte_pulse`](#zer0dte_pulse) | Lightweight monitoring — call every 5-10 minutes |
 | [`zer0dte_alert`](#zer0dte_alert) | Regime flips, level breaks, VIX spikes |
 | [`zer0dte_calendar`](#zer0dte_calendar) | Economic events, FOMC, early close status |
+| [`zer0dte_entry_score`](#zer0dte_entry_score) | Research-backed entry scoring (0-100) |
 
 ### Dealer Positioning
 
@@ -297,12 +298,25 @@ Monitors for significant changes: regime flips, level breaks, VIX spikes, proxim
 
 ---
 
+### `zer0dte_entry_score`
+
+Should you enter a 0DTE trade right now? Returns a score from 0 to 100 based on multiple market factors evaluated against academic research. The model considers regime dynamics, intraday timing patterns, volatility context, and positioning data.
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `symbol` | string | `SPX` | Underlying symbol |
+
+**Returns:** score (0-100), verdict (STRONG/DECENT/WEAK/NO TRADE), suggested action.
+
+---
+
 ## What makes this different
 
 - **Computed, not raw** — GEX, DEX, VEX, CHEX derived from Black-Scholes closed-form, not regurgitated chain data
 - **Real-time** — refreshed every 60 seconds during market hours
 - **AI-native** — built for MCP from day one. Structured data optimized for LLM consumption
 - **Accuracy tracking** — historical record of how often computed levels held
+- **Entry scoring** — research-backed 0-100 score that answers "should I enter now?"
 - **Zero friction** — one URL, no SDK, no local installation
 
 ---
