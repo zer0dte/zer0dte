@@ -29,7 +29,7 @@ Once available, add the ZER0DTE server to your MCP client:
 ### Claude Code
 
 ```bash
-claude mcp add --transport http zer0dte https://mcp.zer0dte.trade/mcp \
+claude mcp add --transport http zer0dte https://mcp.zer0dte.trade/sse \
   --header "Authorization: Bearer YOUR_API_KEY"
 ```
 
@@ -40,7 +40,7 @@ Or in `.mcp.json`:
   "mcpServers": {
     "zer0dte": {
       "type": "http",
-      "url": "https://mcp.zer0dte.trade/mcp",
+      "url": "https://mcp.zer0dte.trade/sse",
       "headers": {
         "Authorization": "Bearer ${ZER0DTE_API_KEY}"
       }
@@ -57,7 +57,7 @@ In `claude_desktop_config.json`:
 {
   "mcpServers": {
     "zer0dte": {
-      "url": "https://mcp.zer0dte.trade/mcp",
+      "url": "https://mcp.zer0dte.trade/sse",
       "headers": {
         "Authorization": "Bearer YOUR_API_KEY"
       }

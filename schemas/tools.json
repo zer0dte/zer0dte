@@ -2,7 +2,7 @@
   "server": {
     "name": "ZER0DTE",
     "transport": "http",
-    "endpoint": "https://mcp.zer0dte.trade/mcp",
+    "endpoint": "https://mcp.zer0dte.trade/sse",
     "protocol": "MCP (Model Context Protocol)"
   },
   "tools": [
