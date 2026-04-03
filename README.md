@@ -31,44 +31,20 @@ No API key needed. Add the URL and start using it.
 ### Claude Code
 
 ```bash
-claude mcp add --transport http zer0dte https://mcp.zer0dte.trade/sse
+claude mcp add --transport sse zer0dte https://mcp.zer0dte.trade/sse \
+  --header "Authorization: Bearer free-tier"
 ```
 
-Or in `.mcp.json`:
+> **Free tier:** 3 sessions/day, 5/week. For unlimited access, API keys coming soon — [join the waitlist](https://zer0dte.trade).
 
-```json
-{
-  "mcpServers": {
-    "zer0dte": {
-      "type": "http",
-      "url": "https://mcp.zer0dte.trade/sse"
-    }
-  }
-}
+### Other MCP Clients (Claude Desktop, Cursor, Windsurf)
+
+Add the SSE endpoint with a Bearer token header:
+
 ```
-
-> **Free tier:** 10 calls/day, 50/week. For unlimited access, add an API key — [get one here](https://zer0dte.trade).
-
-### Claude Desktop
-
-In `claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "zer0dte": {
-      "url": "https://mcp.zer0dte.trade/sse",
-      "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
-      }
-    }
-  }
-}
+URL: https://mcp.zer0dte.trade/sse
+Header: Authorization: Bearer free-tier
 ```
-
-### Cursor / Windsurf / Any MCP Client
-
-ZER0DTE uses standard MCP over HTTP transport. Any MCP-compatible client can connect with the URL and an API key.
 
 ---
 
