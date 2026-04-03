@@ -4,9 +4,11 @@
 
 16 MCP tools that give your AI assistant live 0DTE options data: dealer exposure, key levels, regime classification, expected moves, and smart-filtered chains.
 
-No installation. No dependencies. One URL.
+No installation. No dependencies. One URL. **Free to try — 10 calls/day, no registration.**
 
-> **Coming soon.** Join the waitlist at [zer0dte.trade](https://zer0dte.trade) or follow [@zer0dte_ai](https://twitter.com/zer0dte_ai) for updates.
+```
+https://mcp.zer0dte.trade/sse
+```
 
 ---
 
@@ -22,15 +24,14 @@ Your AI Client ←── MCP Protocol ──→ ZER0DTE Server ←── Compute
 
 ---
 
-## Setup
+## Quick Start
 
-Once available, add the ZER0DTE server to your MCP client:
+No API key needed. Add the URL and start using it.
 
 ### Claude Code
 
 ```bash
-claude mcp add --transport http zer0dte https://mcp.zer0dte.trade/sse \
-  --header "Authorization: Bearer YOUR_API_KEY"
+claude mcp add --transport http zer0dte https://mcp.zer0dte.trade/sse
 ```
 
 Or in `.mcp.json`:
@@ -40,14 +41,13 @@ Or in `.mcp.json`:
   "mcpServers": {
     "zer0dte": {
       "type": "http",
-      "url": "https://mcp.zer0dte.trade/sse",
-      "headers": {
-        "Authorization": "Bearer ${ZER0DTE_API_KEY}"
-      }
+      "url": "https://mcp.zer0dte.trade/sse"
     }
   }
 }
 ```
+
+> **Free tier:** 10 calls/day, 50/week. For unlimited access, add an API key — [get one here](https://zer0dte.trade).
 
 ### Claude Desktop
 
@@ -331,7 +331,12 @@ Monitors for significant changes: regime flips, level breaks, VIX spikes, proxim
 
 ## Pricing
 
-Details coming soon. Join the waitlist at [zer0dte.trade](https://zer0dte.trade).
+| Plan | Limit | Price |
+|------|-------|-------|
+| **Free** | 10 calls/day, 50/week | $0 |
+| **Pro** | Unlimited | Coming soon |
+
+Free tier requires no registration. Just add the URL and go.
 
 ---
 
