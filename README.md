@@ -1,10 +1,10 @@
 # ZER0DTE
 
-![Beta](https://img.shields.io/badge/status-beta-blue) ![MCP](https://img.shields.io/badge/protocol-MCP-green) ![Tools](https://img.shields.io/badge/tools-17-orange) ![License](https://img.shields.io/badge/data-free_tier-brightgreen)
+![Beta](https://img.shields.io/badge/status-beta-blue) ![MCP](https://img.shields.io/badge/protocol-MCP-green) ![Tools](https://img.shields.io/badge/tools-19-orange) ![License](https://img.shields.io/badge/data-free_tier-brightgreen)
 
 **Real-time options intelligence for AI agents.**
 
-17 MCP tools that give your AI assistant live 0DTE options data: dealer exposure, key levels, regime classification, expected moves, and smart-filtered chains.
+19 MCP tools that give your AI assistant live 0DTE options data: dealer exposure, key levels, regime classification, expected moves, and smart-filtered chains.
 
 No installation. No dependencies. One URL. **Free beta — 3 sessions/day, no registration.**
 
@@ -16,7 +16,7 @@ https://mcp.zer0dte.trade/sse
 
 ## How it works
 
-ZER0DTE is an [MCP server](https://modelcontextprotocol.io) — a standardized way for AI models to access real-time data. Add one URL to your AI tool's MCP configuration, and you get 16 specialized tools for 0DTE options analysis.
+ZER0DTE is an [MCP server](https://modelcontextprotocol.io) — a standardized way for AI models to access real-time data. Add one URL to your AI tool's MCP configuration, and you get 19 specialized tools for 0DTE options analysis.
 
 The data pipeline polls live options data every 60 seconds during market hours, computes dealer exposure metrics (GEX, DEX, VEX, CHEX), and serves structured results through the MCP protocol. All computation happens server-side.
 
@@ -88,6 +88,8 @@ Header: Authorization: Bearer free-tier
 | [`zer0dte_history`](#zer0dte_history) | Session snapshots for a specific date |
 | [`zer0dte_compare`](#zer0dte_compare) | Find past sessions similar to today |
 | [`zer0dte_opening_range`](#zer0dte_opening_range) | Opening range and breakout status |
+| [`zer0dte_regime_history`](#zer0dte_regime_history) | Regime transition history with context |
+| [`zer0dte_pattern`](#zer0dte_pattern) | Pattern matching: similar past setups and outcomes |
 
 ---
 
@@ -307,6 +309,34 @@ Should you enter a 0DTE trade right now? Returns a score from 0 to 100 based on 
 | `symbol` | string | `SPX` | Underlying symbol |
 
 **Returns:** score (0-100), verdict (STRONG/DECENT/WEAK/NO TRADE), suggested action.
+
+---
+
+### `zer0dte_regime_history`
+
+Regime transition history: what happened the last N times the GEX regime flipped? Returns each transition with from/to regime, duration, GEX at flip, price action, and trigger event.
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `symbol` | string | `SPX` | Underlying symbol |
+| `lookback_days` | integer | `30` | How many days back to search |
+
+**Returns:** transitions with from/to regime, duration, GEX, price, trigger, regime distribution.
+
+---
+
+### `zer0dte_pattern`
+
+Pattern matching: has this setup happened before? Given a regime and/or proximity to a key level, finds historical matches and reports what happened next.
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `symbol` | string | `SPX` | Underlying symbol |
+| `regime` | string | auto | `positive_gamma`, `negative_gamma`, or `neutral`. Auto-detects if omitted. |
+| `near_level` | string | none | `put_wall`, `call_wall`, or `gamma_flip` |
+| `lookback_days` | integer | `90` | How many days back to search |
+
+**Returns:** matched setups with dates, price moves, duration, bullish percentage, average outcome.
 
 ---
 

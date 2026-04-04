@@ -137,6 +137,24 @@
       "parameters": {
         "symbol": { "type": "string", "default": "SPX", "description": "Underlying symbol" }
       }
+    },
+    {
+      "name": "zer0dte_regime_history",
+      "description": "Regime transition history: what happened the last N times the regime flipped? Returns transitions with from/to regime, duration, GEX, price, and trigger.",
+      "parameters": {
+        "symbol": { "type": "string", "default": "SPX", "description": "Underlying symbol" },
+        "lookback_days": { "type": "integer", "default": 30, "description": "How many days back to search" }
+      }
+    },
+    {
+      "name": "zer0dte_pattern",
+      "description": "Pattern matching: find historical instances matching the current setup. Given regime and/or proximity to a key level, returns what happened next.",
+      "parameters": {
+        "symbol": { "type": "string", "default": "SPX", "description": "Underlying symbol" },
+        "regime": { "type": "string", "enum": ["positive_gamma", "negative_gamma", "neutral"], "description": "Filter by regime. Auto-detects if omitted." },
+        "near_level": { "type": "string", "enum": ["put_wall", "call_wall", "gamma_flip"], "description": "Filter by proximity to level type" },
+        "lookback_days": { "type": "integer", "default": 90, "description": "How many days back to search" }
+      }
     }
   ]
 }
