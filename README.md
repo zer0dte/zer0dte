@@ -50,17 +50,33 @@ Header: Authorization: Bearer free-tier
 
 ### First question to ask
 
-Once connected, type this to your AI:
+Once connected, you have two ways to start:
+
+**Minimal:** just say `Hi` — the AI will offer you the current snapshot.
+
+**Or go direct:**
 
 > **What's the 0DTE setup on SPX right now?**
 
-This calls `zer0dte_snapshot` and returns regime, key levels, expected move,
-VIX, and flows in one response. From there, drill into any dimension:
+This calls `zer0dte_snapshot` and returns regime, key levels, expected
+move, VIX, and flows in one response. From there, drill into any dimension:
 
+**Market state**
 - *"Where are the call and put walls?"* → `zer0dte_levels`
-- *"Has this regime happened before? What followed?"* → `zer0dte_pattern`
-- *"Show me the chain at 25-delta for an iron condor"* → `zer0dte_strikes`
-- *"Should I enter now?"* → `zer0dte_entry_score` (0-100 research-backed)
+- *"Show me GEX distribution by strike"* → `zer0dte_exposure`
+- *"What regime are we in?"* → `zer0dte_regime`
+
+**Historical intelligence**
+- *"When did the regime last flip?"* → `zer0dte_regime_history`
+- *"What happened the last time we were in positive gamma?"* → `zer0dte_pattern`
+- *"Find sessions similar to today"* → `zer0dte_compare`
+
+**Trade setup**
+- *"Suggest 10-delta strikes for an iron condor"* → `zer0dte_strikes`
+- *"Should I enter now?"* → `zer0dte_entry_score`
+- *"Is there a FOMC event today?"* → `zer0dte_calendar`
+
+All 19 tools documented below.
 
 ---
 
@@ -356,12 +372,14 @@ Pattern matching: has this setup happened before? Given a regime and/or proximit
 
 ## What makes this different
 
-- **Computed, not raw** — GEX, DEX, VEX, CHEX derived from Black-Scholes closed-form, not regurgitated chain data
-- **Real-time** — refreshed every 60 seconds during market hours
-- **AI-native** — built for MCP from day one. Structured data optimized for LLM consumption
-- **Accuracy tracking** — historical record of how often computed levels held
-- **Entry scoring** — research-backed 0-100 score that answers "should I enter now?"
-- **Zero friction** — one URL, no SDK, no local installation
+- **MCP-native from day one** — one URL. No dashboard to scrape, no SDK to integrate. Claude, Cursor, Windsurf, Claude Desktop all work out of the box.
+- **Computed, not raw** — GEX, DEX, VEX, CHEX derived server-side from Black-Scholes closed-form. The AI gets structured metrics, not re-chewed chain data.
+- **Market memory** — every regime transition and key level snapshot is stored and queryable. Ask *"what happened the last time we were in positive gamma near the put wall?"* and get historical matches with actual outcomes.
+- **Disambiguated tools** — 19 tools with explicit WHEN-TO-USE and WHEN-NOT-TO-USE descriptions so the AI picks the right one on the first try. No more "the AI called the wrong tool" failures.
+- **Educational framing** — language is always statistical and educational. *"Historically, X% of sessions with this setup showed Y"* — never *"you should buy"*.
+- **Accuracy tracking** — historical record of how often computed levels actually held. Trust earned with data, not claims.
+- **Entry scoring** — research-backed 0-100 score (Option Alpha 25K trades, CAIA Papagelis 2025, Kelly-VIX framework). Not a black box.
+- **Open source** — server code on GitHub. Audit the math, read the tool implementations, fork if you want.
 
 ---
 
